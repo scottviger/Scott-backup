@@ -28,7 +28,7 @@ echo """
 #Made by Scottviger
 #Restoration
 sudo -s
-DIR=`pwd`
+DIR=\`pwd\`
 cd /
 mysql -u $mysqluser -p$mysqlpass $mysql_sql < $DIR/$mysql_sql.sql
 rm -R $src_dir
