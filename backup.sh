@@ -26,7 +26,8 @@ echo """
 #Auto-Backup
 #Made by Scottviger
 #Restoration
-DIR=\`pwd\`
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 cd /
 mysql -u $mysqluser -p$mysqlpass $mysql_sql < \$DIR/$mysql_sql.sql
 sudo rm -R $src_dir
