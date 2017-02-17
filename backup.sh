@@ -26,12 +26,11 @@ echo ""
 #Auto-Backup
 #Made by Scottviger
 #Restoration
-DIR="\$( cd "\$( dirname "\${BASH_SOURCE[0]}" )" && pwd )"
-
 cd /
-mysql -u $mysqluser -p$mysqlpass $mysql_sql < \$DIR/$mysql_sql.sql
+DIR=HELPHELPHELPHELPHELPHELPHELP
+mysql -u $mysqluser -p$mysqlpass $mysql_sql < $DIR/$mysql_sql.sql
 sudo rm -R $src_dir
-sudo tar -Jxvf \$DIR/data.tar.xz
+sudo tar -Jxvf $DIR/data.tar.xz
 "" >> $des_dir/$dirname/restore.sh
 
 echo "Unmounting"
