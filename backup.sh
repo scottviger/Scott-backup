@@ -12,7 +12,7 @@ src_dir=$4	#Input capture DON'T FINISH WITH /
 des_dir=$5	#Input capture DON'T FINISH WITH /
 
 echo "Mounting" #Mount backup dir (Optional)
-mount /dev/sda1 $des_dir
+mount /dev/sda1 /backup
 cd /
 
 echo "Saving." #start saving process
@@ -33,6 +33,6 @@ sudo tar -Jxvf "$des_dir/$dirname/data.tar.xz"
 """ >> $des_dir/$dirname/restore.sh
 
 echo "Unmounting"
-umount $des_dir
+umount /backup
 echo "Don't forget,"
 echo "Stay safe!"
