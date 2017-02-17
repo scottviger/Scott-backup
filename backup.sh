@@ -3,7 +3,6 @@
 #Made by Scottviger
 #./backup.sh Mysqluser Mysqlpassword SQL Source-dir Destination-dir
 #
-sudo -s
 time=`date +%F`	#Way the time is displayed
 dirname=$time-Backup	#Name of the save dir
 mysqluser=$1	#Input capture
@@ -17,9 +16,9 @@ mount /dev/sda1 /backup
 cd /
 
 echo "Saving." #start saving process
-mkdir $des_dir/$dirname && echo "."
+sudo mkdir $des_dir/$dirname && echo "."
 mysqldump --opt -u $mysqluser -p$mysqlpass $mysql_sql > $des_dir/$dirname/$mysql_sql.sql && echo "."
-XZ_OPT=-9 tar -cpJf $des_dir/$dirname/data.tar.xz $src_dir && echo ".Done!"
+sudo XZ_OPT=-9 tar -cpJf $des_dir/$dirname/data.tar.xz $src_dir && echo ".Done!"
 
 echo "Creating Restoration script"
 echo """
@@ -27,11 +26,10 @@ echo """
 #Auto-Backup
 #Made by Scottviger
 #Restoration
-sudo -s
 DIR=\`pwd\`
 cd /
 mysql -u $mysqluser -p$mysqlpass $mysql_sql < $DIR/$mysql_sql.sql
-rm -R $src_dir
+sudo rm -R $src_dir
 sudo tar -Jxvf "$DIR/data.tar.xz"
 """ >> $des_dir/$dirname/restore.sh
 
