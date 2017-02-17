@@ -3,6 +3,7 @@
 #Made by Scottviger
 #./backup.sh Mysqluser Mysqlpassword SQL Source-dir Destination-dir
 #
+sudo -s
 time=`date +%F`	#Way the time is displayed
 dirname=$time-Backup	#Name of the save dir
 mysqluser=$1	#Input capture
@@ -26,10 +27,12 @@ echo """
 #Auto-Backup
 #Made by Scottviger
 #Restoration
+sudo -s
+DIR=`pwd`
 cd /
-mysql -u $mysqluser -p$mysqlpass $mysql_sql < $des_dir/$dirname/$mysql_sql.sql
+mysql -u $mysqluser -p$mysqlpass $mysql_sql < $DIR/$mysql_sql.sql
 rm -R $src_dir
-sudo tar -Jxvf "$des_dir/$dirname/data.tar.xz"
+sudo tar -Jxvf "$DIR/data.tar.xz"
 """ >> $des_dir/$dirname/restore.sh
 
 echo "Unmounting"
