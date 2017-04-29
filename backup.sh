@@ -11,8 +11,8 @@ mysql_sql=$3	#Input capture
 src_dir=$4	#Input capture DON'T FINISH WITH /
 des_dir=$5	#Input capture DON'T FINISH WITH /
 
-echo "Mounting" #Mount backup dir (Optional)
-mount /dev/sda1 /backup
+#echo "Mounting" #Mount backup dir (Optional)
+#mount /dev/sdc1 /backup
 cd /
 
 echo "Saving." #start saving process
